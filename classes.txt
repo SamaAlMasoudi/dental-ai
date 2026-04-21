@@ -1,0 +1,5 @@
+BDC-BDR
+Caries
+Fractured
+Healthy
+Infection

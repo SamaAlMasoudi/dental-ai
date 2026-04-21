@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DentalAI - Analysis Results</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="h-full flex flex-col bg-gray-50">
+
+    <header class="w-full sticky top-0 z-40 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center">
+                    <i data-lucide="smile" class="text-white"></i>
+                </div>
+                <span class="text-xl font-bold text-blue-600">DentalAI</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-blue-600"
+                    data-i18n="nav_home">Home</a>
+                <a href="upload.html" class="text-sm font-medium text-gray-700 hover:text-blue-600"
+                    data-i18n="nav_analyze">Analyze</a>
+                <a href="profile.html" class="text-sm font-medium text-gray-700 hover:text-blue-600"
+                    data-i18n="nav_profile">Profile</a>
+                <a href="about.html" class="text-sm font-medium text-gray-700 hover:text-blue-600"
+                    data-i18n="nav_about">About Us</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button id="lang-toggle"
+                    class="bg-gray-100 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    <span id="lang-text">عربي</span>
+                </button>
+                <a href="profile.html"
+                    class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 hover:bg-blue-100 transition">
+                    <i data-lucide="user" class="w-5 h-5"></i>
+                </a>
+                <button onclick="logout()" class="text-sm text-red-500 font-medium"
+                    data-i18n="nav_logout">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 p-6 lg:p-8 max-w-7xl mx-auto w-full">
+        <div id="resultCard" class="bg-white rounded-2xl p-8 mb-8 text-center shadow-sm border border-blue-100">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800" data-i18n="diagnosis_title">🧠 AI Diagnosis Result</h2>
+            <div class="flex flex-col items-center justify-center gap-2">
+                <div id="diagnosis-result"
+                    class="inline-block px-10 py-4 rounded-2xl bg-blue-600 text-white text-2xl font-bold shadow-lg">
+                    Analyzing...</div>
+                <div class="flex items-center gap-2 mt-2">
+                    <span class="text-gray-500 font-medium" data-i18n="confidence_label">Confidence:</span>
+                    <span id="confidence-result" class="text-blue-600 font-bold text-lg">--%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 h-full">
+                    <div id="markers-container"
+                        class="relative aspect-video w-full flex items-center justify-center bg-black rounded-xl overflow-hidden">
+                        <img id="xray-image" src="" alt="Analyzed X-ray" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div
+                    class="bg-white rounded-2xl overflow-hidden flex flex-col h-[400px] shadow-lg border border-gray-100">
+                    <div class="bg-blue-600 px-6 py-4 text-white">
+                        <h3 class="font-bold" data-i18n="chat_title">AI Dental Assistant</h3>
+                        <p class="text-xs opacity-90" data-i18n="chat_subtitle">Online & Ready</p>
+                    </div>
+                    <div id="chat-box" class="flex-1 overflow-y-auto p-4 space-y-4 bg-white"></div>
+                    <div class="p-4 border-t border-gray-100 bg-gray-50 flex gap-2">
+                        <input id="chat-input" type="text"
+                            class="flex-1 bg-white border border-gray-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            data-i18n="chat_placeholder" placeholder="Ask something...">
+                        <button id="send-chat"
+                            class="bg-blue-600 text-white p-2 rounded-xl hover:bg-blue-700 transition">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+                    <i data-lucide="smile" class="text-white w-5 h-5"></i>
+                </div>
+                <span class="text-xl font-bold">DentalAI</span>
+            </div>
+            <p class="text-gray-400 text-sm" data-i18n="footer_text">© 2026 DentalAI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const result = localStorage.getItem('diagnosisResult');
+            if (result) {
+                const data = JSON.parse(result);
+                document.getElementById('diagnosis-result').textContent = data.prediction;
+                document.getElementById('confidence-result').textContent = `${data.confidence}%`;
+                document.getElementById('xray-image').src = data.image_url;
+            }
+        });
+    </script>
+</body>
+
+</html>

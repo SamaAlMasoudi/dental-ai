@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DentalAI - Find a Doctor</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="h-full bg-gray-50">
+
+    <header class="w-full sticky top-0 z-40 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center">
+                    <i data-lucide="smile" class="text-white"></i>
+                </div>
+                <span class="text-xl font-bold text-blue-600">DentalAI</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-blue-600" data-i18n="nav_home">Home</a>
+                <a href="upload.html" class="text-sm font-medium text-gray-700 hover:text-blue-600" data-i18n="nav_analyze">Analyze</a>
+                 <a href="profile.html" class="text-sm font-medium text-gray-700 hover:text-blue-600" data-i18n="nav_profile">Profile</a>
+                <a href="about.html" class="text-sm font-medium text-gray-700 hover:text-blue-600" data-i18n="nav_about">About Us</a>
+            </nav>
+            <button id="lang-toggle" class="bg-gray-100 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2">
+                <i data-lucide="globe" class="w-4 h-4"></i>
+                <span id="lang-text">عربي</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-6 lg:p-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Recommended Doctors</h2>
+        
+        <div id="doctor-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Example Doctor Card -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
+                        <i data-lucide="user" class="text-blue-600 w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg">Dr. Ahmed Ali</h3>
+                        <p class="text-sm text-blue-600 font-medium">Orthodontist</p>
+                    </div>
+                </div>
+                <div class="space-y-2 mb-6">
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                        <i data-lucide="map-pin" class="w-4 h-4"></i>
+                        <span>Riyadh, Saudi Arabia</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600">
+                        <i data-lucide="award" class="w-4 h-4"></i>
+                        <span>10+ Years Experience</span>
+                    </div>
+                </div>
+                <button onclick="bookAppointment('Dr. Ahmed Ali')" class="w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-100">
+                    Book Appointment
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        function bookAppointment(doctorName) {
+            Swal.fire({
+                title: 'Confirm Booking',
+                text: `Do you want to book an appointment with ${doctorName}?`,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Book Now',
+                confirmButtonColor: '#2563eb'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Booking Sent!',
+                        text: `An email has been sent to ${doctorName}. You will receive a confirmation soon.`,
+                        icon: 'success'
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

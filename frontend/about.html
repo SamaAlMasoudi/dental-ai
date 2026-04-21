@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DentalAI - About Us</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        [dir="rtl"] {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="h-full bg-gray-50 flex flex-col">
+
+    <!-- Header -->
+    <header class="w-full sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center">
+                    <i data-lucide="smile" class="text-white"></i>
+                </div>
+                <span class="text-xl font-bold text-blue-600">DentalAI</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-blue-600"
+                    data-i18n="nav_home">Home</a>
+                <a href="upload.html" class="text-sm font-medium text-gray-700 hover:text-blue-600"
+                    data-i18n="nav_analyze">Analyze</a>
+                <a href="profile.html" class="text-sm font-medium text-gray-700 hover:text-blue-600" data-i18n="nav_profile">Profile</a>
+                <a href="about.html" class="text-sm font-medium text-blue-600" data-i18n="nav_about">About Us</a>
+
+            </nav>
+            <div class="flex items-center gap-4">
+                <button id="lang-toggle" onclick="toggleLanguage()"
+                    class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition text-sm font-medium">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    <span id="lang-text">عربي</span>
+                </button>
+                <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-blue-600"
+                    data-i18n="nav_home">Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="flex-grow">
+        <section class="py-16 px-4 bg-gradient-to-b from-white to-gray-50">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6" data-i18n="about_title">
+                    Transforming Dentistry with Artificial Intelligence
+                </h1>
+                <p class="text-xl text-gray-600 mb-8" data-i18n="about_subtitle">
+                    We bridge the gap between advanced technology and clinical expertise to provide accurate dental
+                    diagnostics.
+                </p>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="py-12 px-4">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dbc999ef?auto=format&fit=crop&q=80&w=800"
+                        alt="Dental Technology" class="rounded-3xl shadow-2xl border-8 border-white">
+                </div>
+                <div class="space-y-6">
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <h3 class="text-xl font-bold text-blue-600 mb-2" data-i18n="mission_title">Our Mission</h3>
+                        <p class="text-gray-600 leading-relaxed" data-i18n="mission_desc">
+                            To empower dentists and patients with instant, high-precision AI diagnostics, reducing
+                            errors and improving treatment outcomes globally.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                        <h3 class="text-xl font-bold text-blue-600 mb-2" data-i18n="vision_title">Our Vision</h3>
+                        <p class="text-gray-600 leading-relaxed" data-i18n="vision_desc">
+                            To become the world's leading platform for AI-driven oral healthcare, making professional
+                            dental analysis accessible to everyone, everywhere.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Features Grid -->
+        <section class="py-16 px-4 bg-blue-600 text-white rounded-[3rem] mx-4 mb-12">
+            <div class="max-w-6xl mx-auto text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4" data-i18n="why_choose_us">Why Choose DentalAI?</h2>
+            </div>
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-blue-500/50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="zap" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2" data-i18n="feat_speed">Instant Results</h4>
+                    <p class="text-blue-100" data-i18n="feat_speed_desc">Get your X-ray analysis in seconds using our
+                        cloud-based AI engine.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-blue-500/100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="target" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2" data-i18n="feat_acc">High Accuracy</h4>
+                    <p class="text-blue-100" data-i18n="feat_acc_desc">Trained on thousands of professional radiographs
+                        for maximum precision.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-blue-500/50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2" data-i18n="feat_secure">Secure & Private</h4>
+                    <p class="text-blue-100" data-i18n="feat_secure_desc">Your medical data is encrypted and handled
+                        with the highest privacy standards.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="w-full bg-gray-900 text-white py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+                    <i data-lucide="smile" class="text-white w-5 h-5"></i>
+                </div>
+                <span class="text-xl font-bold">DentalAI</span>
+            </div>
+            <p class="text-gray-400 text-sm" data-i18n="footer_text">© 2026 DentalAI. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+
+        const pageTranslations = {
+            en: {
+                'lang-text': 'عربي',
+                'nav_home': 'Home',
+                'nav_about': 'About Us',
+                'nav_analyze': 'Analyze',
+                'nav_profile' :'profile',
+                'about_title': 'Transforming Dentistry with Artificial Intelligence',
+                'about_subtitle': 'We bridge the gap between advanced technology and clinical expertise to provide accurate dental diagnostics.',
+                'mission_title': 'Our Mission',
+                'mission_desc': 'To empower dentists and patients with instant, high-precision AI diagnostics, reducing errors and improving treatment outcomes globally.',
+                'vision_title': 'Our Vision',
+                'vision_desc': 'To become the world\'s leading platform for AI-driven oral healthcare, making professional dental analysis accessible to everyone, everywhere.',
+                'why_choose_us': 'Why Choose DentalAI?',
+                'feat_speed': 'Instant Results',
+                'feat_speed_desc': 'Get your X-ray analysis in seconds using our cloud-based AI engine.',
+                'feat_acc': 'High Accuracy',
+                'feat_acc_desc': 'Trained on thousands of professional radiographs for maximum precision.',
+                'feat_secure': 'Secure & Private',
+                'feat_secure_desc': 'Your medical data is encrypted and handled with the highest privacy standards.'
+            },
+            ar: {
+                'lang-text': 'English',
+                'nav_home': 'الرئيسية',
+                'nav_about': 'من نحن',
+                'nav_profile' :'الملف الشخصي',
+                'nav_analyze': 'تحليل الأشعة',
+                'about_title': 'تحويل طب الأسنان باستخدام الذكاء الاصطناعي',
+                'about_subtitle': 'نحن نسد الفجوة بين التكنولوجيا المتقدمة والخبرة السريرية لتقديم تشخيص دقيق للأسنان.',
+                'mission_title': 'مهمتنا',
+                'mission_desc': 'تمكين أطباء الأسنان والمرضى من خلال تشخيصات فورية وعالية الدقة تعتمد على الذكاء الاصطناعي، مما يقلل الأخطاء ويحسن نتائج العلاج عالمياً.',
+                'vision_title': 'رؤيتنا',
+                'vision_desc': 'أن نصبح المنصة العالمية الرائدة في مجال الرعاية الصحية للفم المدعومة بالذكاء الاصطناعي، مما يجعل التحليل المهني للأسنان متاحاً للجميع في كل مكان.',
+                'why_choose_us': 'لماذا تختار DentalAI؟',
+                'feat_speed': 'نتائج فورية',
+                'feat_speed_desc': 'احصل على تحليل صور الأشعة الخاصة بك في ثوانٍ باستخدام محرك الذكاء الاصطناعي السحابي الخاص بنا.',
+                'feat_acc': 'دقة عالية',
+                'feat_acc_desc': 'مدرب على آلاف الصور الشعاعية المهنية لضمان أقصى قدر من الدقة.',
+                'feat_secure': 'آمن وخاص',
+                'feat_secure_desc': 'بياناتك الطبية مشفرة ويتم التعامل معها بأعلى معايير الخصوصية.',
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'en';
+
+        function updateUI() {
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (pageTranslations[currentLang][key]) {
+                    el.textContent = pageTranslations[currentLang][key];
+                }
+            });
+
+            document.getElementById('lang-text').textContent = pageTranslations[currentLang]['lang-text'];
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            localStorage.setItem('lang', currentLang);
+            updateUI();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUI();
+            if (window.lucide) lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

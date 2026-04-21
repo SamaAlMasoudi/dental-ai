@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DentalAI - Profile</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="h-full bg-gray-50">
+
+    <header class="w-full sticky top-0 z-40 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center">
+                    <i data-lucide="smile" class="text-white"></i>
+                </div>
+                <span class="text-xl font-bold text-blue-600">DentalAI</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-blue-600"
+                    data-i18n="nav_home">Home</a>
+                <a href="upload.html" class="text-sm font-medium text-gray-700 hover:text-blue-600"
+                    data-i18n="nav_analyze">Analyze</a>
+                <a href="profile.html" class="text-sm font-medium text-blue-600" data-i18n="nav_profile">Profile</a>
+            <a href="about.html" class="text-sm font-medium text-gray-700 hover:text-blue-600" data-i18n="nav_about">About Us</a>
+                </nav>
+            <div class="flex items-center gap-4">
+                <button id="lang-toggle"
+                    class="bg-gray-100 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    <span id="lang-text">عربي</span>
+                </button>
+                <button onclick="logout()" class="text-sm text-red-500 font-medium"
+                    data-i18n="nav_logout">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6 lg:p-12">
+        <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
+            <div class="flex items-center gap-6 mb-8 pb-8 border-b border-gray-100">
+                <div class="w-24 h-24 rounded-2xl bg-blue-100 flex items-center justify-center">
+                    <i data-lucide="user" class="text-blue-600 w-12 h-12"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900" data-i18n="profile_title">User Profile</h2>
+                    <p class="text-gray-500" data-i18n="profile_subtitle">Manage your personal information</p>
+                </div>
+            </div>
+
+            <form id="profileForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="name_label">Full
+                            Name</label>
+                        <input type="text" name="name" id="p_name" required
+                            class="w-full px-4 py-3 border rounded-xl sm:text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="email_label">Email
+                            Address</label>
+                        <input type="email" id="p_email" disabled
+                            class="w-full px-4 py-3 border rounded-xl sm:text-sm bg-gray-50 cursor-not-allowed">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="phone_label">Phone
+                            Number</label>
+                        <input type="text" name="phone" id="p_phone" required
+                            class="w-full px-4 py-3 border rounded-xl sm:text-sm">
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Patient Fields -->
+                    <div id="p-patient-fields" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1"
+                                data-i18n="age_label">Age</label>
+                            <input type="number" name="age" id="p_age"
+                                class="w-full px-4 py-3 border rounded-xl sm:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1"
+                                data-i18n="gender_label">Gender</label>
+                            <select name="gender" id="p_gender" class="w-full px-4 py-3 border rounded-xl sm:text-sm">
+                                <option value="male" data-i18n="male">Male</option>
+                                <option value="female" data-i18n="female">Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1"
+                                data-i18n="history_label">Medical History</label>
+                            <textarea name="history" id="p_history"
+                                class="w-full px-4 py-3 border rounded-xl sm:text-sm"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Fields -->
+                    <div id="p-doctor-fields" class="hidden space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1"
+                                data-i18n="specialty_label">Specialty</label>
+                            <input type="text" name="specialty" id="p_specialty"
+                                class="w-full px-4 py-3 border rounded-xl sm:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="clinic_label">Clinic
+                                Location</label>
+                            <input type="text" name="clinic_location" id="p_clinic"
+                                class="w-full px-4 py-3 border rounded-xl sm:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1"
+                                data-i18n="experience_label">Years of Experience</label>
+                            <input type="number" name="experience" id="p_experience"
+                                class="w-full px-4 py-3 border rounded-xl sm:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1"
+                                data-i18n="bio_label">Professional Bio</label>
+                            <textarea name="bio" id="p_bio"
+                                class="w-full px-4 py-3 border rounded-xl sm:text-sm"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2 pt-6">
+                    <button type="submit"
+                        class="w-full py-4 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:bg-blue-700 transition shadow-lg shadow-blue-100"
+                        data-i18n="save_changes">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="w-full bg-gray-900 text-white py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+                    <i data-lucide="smile" class="text-white w-5 h-5"></i>
+                </div>
+                <span class="text-xl font-bold">DentalAI</span>
+            </div>
+            <p class="text-gray-400 text-sm" data-i18n="footer_text">© 2026 DentalAI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                document.getElementById('p_name').value = user.name || '';
+                document.getElementById('p_email').value = user.email || '';
+                document.getElementById('p_phone').value = user.phone || '';
+
+                if (user.role === 'doctor') {
+                    document.getElementById('p-doctor-fields').classList.remove('hidden');
+                    document.getElementById('p-patient-fields').classList.add('hidden');
+                    document.getElementById('p_specialty').value = user.specialty || '';
+                    document.getElementById('p_clinic').value = user.clinic_location || '';
+                    document.getElementById('p_experience').value = user.experience || '';
+                    document.getElementById('p_bio').value = user.bio || '';
+                } else {
+                    document.getElementById('p_age').value = user.age || '';
+                    document.getElementById('p_gender').value = user.gender || 'male';
+                    document.getElementById('p_history').value = user.history || '';
+                }
+            }
+        });
+
+        document.getElementById('profileForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const user = JSON.parse(localStorage.getItem('user'));
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            data.id = user.id;
+            data.role = user.role;
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/update-profile', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                if (result.success) {
+                    localStorage.setItem('user', JSON.stringify(result.user));
+                    Swal.fire({
+                        text: currentLang === 'ar' ? 'تم تحديث الملف بنجاح!' : 'Profile updated successfully!',
+                        icon: 'success',
+                        confirmButtonText: currentLang === 'ar' ? 'حسناً' : 'OK'
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    text: 'Error updating profile',
+                    icon: 'error',
+                    confirmButtonText: currentLang === 'ar' ? 'حسناً' : 'OK'
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DentalAI - Register</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="h-full bg-gray-50 flex items-center justify-center p-4">
+    <div class="max-w-2xl w-full space-y-8 bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+        <div class="text-center">
+            <div class="mx-auto h-12 w-12 rounded-xl bg-blue-600 flex items-center justify-center mb-4">
+                <i data-lucide="smile" class="text-white w-8 h-8"></i>
+            </div>
+            <h2 class="text-3xl font-extrabold text-gray-900" data-i18n="register_title">Create Account</h2>
+            <p class="mt-2 text-sm text-gray-600" data-i18n="register_subtitle">Join our AI-powered dental network</p>
+        </div>
+
+        <form class="mt-8 space-y-4" id="registerForm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Common Fields -->
+                <div class="space-y-4">
+                    <input type="text" name="name" required class="w-full px-4 py-3 border rounded-xl sm:text-sm"
+                        data-i18n="name_label" placeholder="Full Name">
+                    <input type="email" name="email" required class="w-full px-4 py-3 border rounded-xl sm:text-sm"
+                        data-i18n="email_label" placeholder="Email Address">
+                    <input type="password" name="password" required
+                        class="w-full px-4 py-3 border rounded-xl sm:text-sm" data-i18n="password_label"
+                        placeholder="Password">
+                    <input type="text" name="phone" required class="w-full px-4 py-3 border rounded-xl sm:text-sm"
+                        data-i18n="phone_label" placeholder="Phone Number">
+                </div>
+
+                <!-- Role Selection & Specific Fields -->
+                <div class="space-y-4">
+                    <div class="flex gap-4 mb-4">
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="role" value="patient" checked class="hidden peer"
+                                onchange="toggleFields('patient')">
+                            <div
+                                class="p-3 text-center border rounded-xl peer-checked:bg-blue-50 peer-checked:border-blue-500 peer-checked:text-blue-600 transition-all">
+                                <i data-lucide="user" class="w-5 h-5 mx-auto mb-1"></i>
+                                <span class="text-xs font-bold" data-i18n="role_patient">Patient</span>
+                            </div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="role" value="doctor" class="hidden peer"
+                                onchange="toggleFields('doctor')">
+                            <div
+                                class="p-3 text-center border rounded-xl peer-checked:bg-blue-50 peer-checked:border-blue-500 peer-checked:text-blue-600 transition-all">
+                                <i data-lucide="stethoscope" class="w-5 h-5 mx-auto mb-1"></i>
+                                <span class="text-xs font-bold" data-i18n="role_doctor">Doctor</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Patient Fields -->
+                    <div id="patient-fields" class="space-y-4">
+                        <input type="number" name="age" class="w-full px-4 py-3 border rounded-xl sm:text-sm"
+                            data-i18n="age_label" placeholder="Age">
+                        <select name="gender" class="w-full px-4 py-3 border rounded-xl sm:text-sm">
+                            <option value="male" data-i18n="male">Male</option>
+                            <option value="female" data-i18n="female">Female</option>
+                        </select>
+                        <textarea name="history" class="w-full px-4 py-3 border rounded-xl sm:text-sm"
+                            data-i18n="history_label" placeholder="Medical History"></textarea>
+                    </div>
+
+                    <!-- Doctor Fields -->
+                    <div id="doctor-fields" class="hidden space-y-4">
+                        <input type="text" name="specialty" class="w-full px-4 py-3 border rounded-xl sm:text-sm"
+                            data-i18n="specialty_label" placeholder="Specialty">
+                        <input type="text" name="clinic_location" class="w-full px-4 py-3 border rounded-xl sm:text-sm"
+                            data-i18n="clinic_label" placeholder="Clinic Location">
+                        <input type="number" name="experience" class="w-full px-4 py-3 border rounded-xl sm:text-sm"
+                            data-i18n="experience_label" placeholder="Years of Experience">
+                        <textarea name="bio" class="w-full px-4 py-3 border rounded-xl sm:text-sm" data-i18n="bio_label"
+                            placeholder="Professional Bio"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit"
+                class="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-blue-600 hover:bg-blue-700 transition-all"
+                data-i18n="sign_up_btn">
+                Sign up
+            </button>
+        </form>
+
+        <div class="text-center mt-4">
+            <p class="text-sm text-gray-600">
+                <span data-i18n="no_account">Already have an account?</span>
+                <a href="login.html" class="font-medium text-blue-600 hover:text-blue-500" data-i18n="sign_in_btn">Sign
+                    in</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        function toggleFields(role) {
+            if (role === 'doctor') {
+                document.getElementById('doctor-fields').classList.remove('hidden');
+                document.getElementById('patient-fields').classList.add('hidden');
+            } else {
+                document.getElementById('doctor-fields').classList.add('hidden');
+                document.getElementById('patient-fields').classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                if (result.success) {
+                    Swal.fire({
+                        text: currentLang === 'ar' ? 'تم التسجيل بنجاح!' : 'Registration successful!',
+                        icon: 'success',
+                        confirmButtonText: currentLang === 'ar' ? 'حسناً' : 'OK'
+                    }).then(() => {
+                        window.location.href = 'login.html';
+                    });
+                } else {
+                    Swal.fire({
+                        text: result.message || result.error,
+                        icon: 'error',
+                        confirmButtonText: currentLang === 'ar' ? 'حسناً' : 'OK'
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    text: 'Connection error',
+                    icon: 'error',
+                    confirmButtonText: currentLang === 'ar' ? 'حسناً' : 'OK'
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
